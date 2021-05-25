@@ -6,6 +6,14 @@ resources:
 - namespace.yaml
 - github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=9a7b0bc35048835516fc5f5f31a93d4c1bd61242 # tag=v2.0.2
 
+replicas:
+  - name: argocd-redis-ha-haproxy
+    count: 1
+  - name: argocd-repo-server
+    count: 1
+  - name: argocd-server
+    count: 1
+
 patchesStrategicMerge:
 - configmap-patch.yaml
 - add-custom-kustomize.yaml
